@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
+    tools:context=".ui.MainActivity">
+
+    <TextView
+        android:id="@+id/exercise_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/weight"
+        tools:text="Back Squat"
+        style="?textAppearanceHeadline6"
+        />
+
+    <TextView
+        android:id="@+id/one_rm_record"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/one_rm_record"
+        app:layout_constraintTop_toBottomOf="@id/exercise_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/weight"
+        style="?textAppearanceBody1"
+        />
+
+    <TextView
+        android:id="@+id/weight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        style="?textAppearanceHeadline6"
+        tools:text="215"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lbs"
+        app:layout_constraintTop_toBottomOf="@id/weight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/weight"
+        style="?textAppearanceBody1"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

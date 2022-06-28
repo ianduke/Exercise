@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Fitbod Interview</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="one_rm_record">1 RM Record</string>
+    <string name="lbs">lbs</string>
+    <string name="lbs_format">%1$s lbs</string>
+
+    <string-array name="exercise_list">
+        <item>Back Squat</item>
+        <item>Barbell Bench Press</item>
+        <item>Deadlift</item>
+    </string-array>
+</resources>

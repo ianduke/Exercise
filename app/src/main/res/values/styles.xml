@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="App.TextAppearance.Headline6" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textColor">?android:textColorPrimary</item>
+    </style>
+
+    <style name="App.TextAppearance.Body1" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">?android:textColorSecondary</item>
+    </style>
+
+</resources>
