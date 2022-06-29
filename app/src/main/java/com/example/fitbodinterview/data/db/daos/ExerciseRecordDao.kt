@@ -16,12 +16,12 @@ interface ExerciseRecordDao {
             "WHERE exercise_id = :exerciseId " +
             "GROUP BY workout_date " +
             "ORDER BY workout_date ASC")
-    fun getExerciseHistory(exerciseId: Long): Flow<List<WorkoutData>>
+    fun getExerciseHistoryByDay(exerciseId: Long): Flow<List<WorkoutData>>
 
     @Query("SELECT exercise.id as exercise_id, exercise.title as exercise_name, max(exercise_record.one_rm) as one_rm_record " +
             "FROM exercise, exercise_record " +
             "WHERE exercise.id = :exerciseId and exercise.id = exercise_record.exercise_id " +
-            "GROUP BY exercise_name")
+            "GROUP BY exercise_id")
     fun getMaxOneRM(exerciseId: Long): Flow<ExerciseSummary>
 
     @Query("SELECT exercise.id as exercise_id, exercise.title as exercise_name, max(exercise_record.one_rm) as one_rm_record " +

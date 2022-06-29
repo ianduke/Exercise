@@ -8,9 +8,6 @@ import android.graphics.Paint.ANTI_ALIAS_FLAG
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
-import androidx.annotation.AttrRes
-import androidx.annotation.ColorInt
-import androidx.core.content.ContextCompat
 import com.example.fitbodinterview.R
 import com.example.fitbodinterview.utils.Logger
 import com.example.fitbodinterview.utils.ThemeExtensions.getTextColorPrimary
@@ -27,7 +24,6 @@ class GraphView(
         private const val AXES_LINE_WIDTH = 4f
         private const val DATA_LINE_WIDTH = 7f
         private const val TEXT_SIZE_IN_SP = 16f
-        private const val Y_MARGIN = 32
     }
 
     private val dataSet = mutableListOf<GraphPoint>()
@@ -37,14 +33,19 @@ class GraphView(
     private var yMax: Int = 0
 
     fun setData(newDataSet: List<GraphPoint>) {
-        Logger.d("XXXX: Setting GraphView data with ${newDataSet.size} records")
         xMin = (newDataSet.minOf { it.x })
         xMax = (newDataSet.maxOf { it.x })
-        yMin = (newDataSet.minOf { it.y }) - Y_MARGIN
-        yMax = (newDataSet.maxOf { it.y }) + Y_MARGIN
+        yMin = (newDataSet.minOf { it.y })
+        yMax = (newDataSet.maxOf { it.y })
+
+        // add padding to the top and bottom of the graph
+        val yPadding = (yMax - yMin) * .1
+        yMin -= yPadding.toInt()
+        yMax += yPadding.toInt()
+
         xOffset = xMin
         yOffset = yMin
-        Logger.d("XXXX: xMin = $xMin, xMax = $xMax, yMin = $yMin, yMax = $yMax")
+
         dataSet.clear()
         dataSet.addAll(newDataSet)
         invalidate()
@@ -73,23 +74,6 @@ class GraphView(
         }
     }
 
-    private fun drawAxes(canvas: Canvas?) {
-        canvas?.drawVerticalAxis(paddingStart)
-        canvas?.drawVerticalAxis((width - paddingEnd)/3)
-        canvas?.drawVerticalAxis((width - paddingEnd)*2/3)
-        canvas?.drawVerticalAxis(width - paddingEnd)
-
-        canvas?.drawHorizontalAxis(0 + paddingTop)
-        canvas?.drawHorizontalAxis((height - paddingBottom)/3)
-        canvas?.drawHorizontalAxis((height - paddingBottom)*2/3)
-        canvas?.drawHorizontalAxis(height - paddingBottom)
-    }
-
-    private fun drawLabels(canvas: Canvas?) {
-        canvas?.drawText(resources.getString(R.string.lbs_format, yMin), paddingStart.toFloat(), (yMin).toRealY(), textPaint)
-        canvas?.drawText(resources.getString(R.string.lbs_format, yMax), paddingStart.toFloat(), (yMax).toRealY(), textPaint)
-    }
-
     private val dataPointPaint = Paint().apply {
         color = Color.RED
         strokeWidth = DATA_LINE_WIDTH
@@ -115,6 +99,23 @@ class GraphView(
             spSize,
             resources.displayMetrics
         )
+    }
+
+    private fun drawAxes(canvas: Canvas?) {
+        canvas?.drawVerticalAxis(paddingStart)
+        canvas?.drawVerticalAxis((width - paddingEnd)/3)
+        canvas?.drawVerticalAxis((width - paddingEnd)*2/3)
+        canvas?.drawVerticalAxis(width - paddingEnd)
+
+        canvas?.drawHorizontalAxis(0 + paddingTop)
+        canvas?.drawHorizontalAxis((height - paddingBottom)/3)
+        canvas?.drawHorizontalAxis((height - paddingBottom)*2/3)
+        canvas?.drawHorizontalAxis(height - paddingBottom)
+    }
+
+    private fun drawLabels(canvas: Canvas?) {
+        canvas?.drawText(resources.getString(R.string.lbs_format, yMin), paddingStart.toFloat(), (yMin).toRealY(), textPaint)
+        canvas?.drawText(resources.getString(R.string.lbs_format, yMax), paddingStart.toFloat(), (yMax).toRealY(), textPaint)
     }
 
     private fun Int.toRealX() = (toFloat() - xOffset) / (xMax - xOffset) * (width - paddingStart - paddingEnd) + paddingStart

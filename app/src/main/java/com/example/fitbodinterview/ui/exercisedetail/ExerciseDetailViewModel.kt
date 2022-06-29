@@ -2,7 +2,6 @@ package com.example.fitbodinterview.ui.exercisedetail
 
 import androidx.lifecycle.ViewModel
 import com.example.fitbodinterview.data.db.models.ExerciseSummary
-import com.example.fitbodinterview.data.db.daos.ExerciseRecordDao
 import com.example.fitbodinterview.data.repos.ExerciseRecordRepo
 import com.example.fitbodinterview.domain.WorkoutDataToGraphPointMapper
 import com.example.fitbodinterview.ui.graph.GraphPoint
@@ -26,7 +25,7 @@ class ExerciseDetailViewModel @Inject constructor(
     }
 
     fun graphPoints(exerciseId: Long): Flow<List<GraphPoint>> = flow {
-        exerciseRecordRepo.getExerciseHistory(exerciseId)
+        exerciseRecordRepo.getExerciseHistoryRepo(exerciseId)
             .catch {  }
             .collect { workoutData ->
                 emit(

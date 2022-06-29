@@ -11,8 +11,8 @@ class ExerciseRecordRepo @Inject constructor(
     private val exerciseRecordDao: ExerciseRecordDao
 ) {
 
-    fun getExerciseHistory(exerciseId: Long): Flow<List<WorkoutData>> =
-        exerciseRecordDao.getExerciseHistory(exerciseId)
+    fun getExerciseHistoryRepo(exerciseId: Long): Flow<List<WorkoutData>> =
+        exerciseRecordDao.getExerciseHistoryByDay(exerciseId)
 
     fun getMaxOneRM(exerciseId: Long): Flow<ExerciseSummary> =
         exerciseRecordDao.getMaxOneRM(exerciseId)
