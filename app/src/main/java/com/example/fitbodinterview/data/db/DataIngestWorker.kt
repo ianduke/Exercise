@@ -5,10 +5,10 @@ import androidx.hilt.work.HiltWorker
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.example.fitbodinterview.R
-import com.example.fitbodinterview.data.Exercise
-import com.example.fitbodinterview.data.ExerciseDao
-import com.example.fitbodinterview.data.ExerciseRecord
-import com.example.fitbodinterview.data.ExerciseRecordDao
+import com.example.fitbodinterview.data.db.models.Exercise
+import com.example.fitbodinterview.data.db.daos.ExerciseDao
+import com.example.fitbodinterview.data.db.models.ExerciseRecord
+import com.example.fitbodinterview.data.db.daos.ExerciseRecordDao
 import com.example.fitbodinterview.utils.Logger
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
@@ -43,7 +43,7 @@ class DataIngestWorker @AssistedInject constructor(
                 stream.reader(Charsets.UTF_8).use { reader ->
                     val exerciseList = context.resources.getStringArray(R.array.exercise_list)
                     exerciseList.forEach { exerciseName ->
-                        exerciseDao.addExercise(Exercise(title = exerciseName))
+                        exerciseDao.insert(Exercise(title = exerciseName))
                     }
 
                     reader.forEachLine { line ->

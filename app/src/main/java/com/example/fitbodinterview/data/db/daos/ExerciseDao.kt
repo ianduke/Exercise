@@ -1,9 +1,9 @@
-package com.example.fitbodinterview.data
+package com.example.fitbodinterview.data.db.daos
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import kotlinx.coroutines.flow.Flow
+import com.example.fitbodinterview.data.db.models.Exercise
 
 @Dao
 interface ExerciseDao {
@@ -18,5 +18,5 @@ interface ExerciseDao {
     suspend fun deleteAll()
 
     @Insert
-    suspend fun addExercise(exercise: Exercise): Long
+    suspend fun insert(exercise: Exercise): Long
 }

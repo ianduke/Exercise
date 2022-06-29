@@ -1,6 +1,6 @@
 package com.example.fitbodinterview.domain
 
-import com.example.fitbodinterview.data.WorkoutData
+import com.example.fitbodinterview.data.db.models.WorkoutData
 import com.example.fitbodinterview.ui.graph.GraphPoint
 
 class WorkoutDataToGraphPointMapper : Mapper<WorkoutData, GraphPoint>() {

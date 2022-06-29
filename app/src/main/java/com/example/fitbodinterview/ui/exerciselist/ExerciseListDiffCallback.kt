@@ -1,7 +1,6 @@
 package com.example.fitbodinterview.ui.exerciselist
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.fitbodinterview.data.ExerciseSummary
 
 class ExerciseListDiffCallback(
     private val oldList: List<ExerciseListItem>,

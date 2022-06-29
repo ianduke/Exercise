@@ -3,10 +3,10 @@ package com.example.fitbodinterview.data.db
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.example.fitbodinterview.data.Exercise
-import com.example.fitbodinterview.data.ExerciseDao
-import com.example.fitbodinterview.data.ExerciseRecord
-import com.example.fitbodinterview.data.ExerciseRecordDao
+import com.example.fitbodinterview.data.db.models.Exercise
+import com.example.fitbodinterview.data.db.daos.ExerciseDao
+import com.example.fitbodinterview.data.db.models.ExerciseRecord
+import com.example.fitbodinterview.data.db.daos.ExerciseRecordDao
 
 @Database(
     entities = [

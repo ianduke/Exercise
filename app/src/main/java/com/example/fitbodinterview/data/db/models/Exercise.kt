@@ -1,4 +1,4 @@
-package com.example.fitbodinterview.data
+package com.example.fitbodinterview.data.db.models
 
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo

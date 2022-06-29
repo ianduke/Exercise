@@ -2,9 +2,9 @@ package com.example.fitbodinterview.data.db
 
 import android.content.Context
 import androidx.room.Room
-import androidx.room.RoomDatabase
-import com.example.fitbodinterview.data.ExerciseDao
-import com.example.fitbodinterview.data.ExerciseRecordDao
+import com.example.fitbodinterview.data.db.daos.ExerciseDao
+import com.example.fitbodinterview.data.db.daos.ExerciseRecordDao
+import com.example.fitbodinterview.data.repos.ExerciseRepo
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

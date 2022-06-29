@@ -1,6 +1,6 @@
 package com.example.fitbodinterview.domain
 
-import com.example.fitbodinterview.data.ExerciseSummary
+import com.example.fitbodinterview.data.db.models.ExerciseSummary
 import com.example.fitbodinterview.ui.exerciselist.ExerciseListItem
 
 class ExerciseSummaryToExerciseListItemMapper : Mapper<ExerciseSummary, ExerciseListItem>() {

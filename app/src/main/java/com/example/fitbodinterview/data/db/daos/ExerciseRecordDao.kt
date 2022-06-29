@@ -1,8 +1,11 @@
-package com.example.fitbodinterview.data
+package com.example.fitbodinterview.data.db.daos
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import com.example.fitbodinterview.data.db.models.ExerciseRecord
+import com.example.fitbodinterview.data.db.models.ExerciseSummary
+import com.example.fitbodinterview.data.db.models.WorkoutData
 import kotlinx.coroutines.flow.Flow
 
 @Dao
